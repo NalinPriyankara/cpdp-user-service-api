@@ -1,9 +1,6 @@
 package com.prime.quickcart.user_service_api.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -29,4 +26,13 @@ public class User {
     private boolean activeStatus;
     @Column(name = "otp", nullable = false)
     private int otp;
+
+    @OneToOne(mappedBy = "user")
+    private ShippingAddress shippingAddress;
+
+    @OneToOne(mappedBy = "user")
+    private BillingAddress billingAddress;
+
+    @OneToOne(mappedBy = "user")
+    private UserAvatar userAvatar;
 }
